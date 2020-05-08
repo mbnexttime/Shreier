@@ -41,7 +41,7 @@ class Tree(
         }
 
         sequences.keys.forEach {
-            keys[it] = mergePermutations(sequences[it]!!)
+            keys[it] = mergePermutations(n, sequences[it]!!)
         }
     }
 
@@ -58,10 +58,12 @@ class Tree(
         return result
     }
 
-    fun mergePermutations(permutations: MutableList<Permutation>): Permutation {
-        var result = Permutation(n)
-        permutations.forEach { result = result.multipliedFromLeft(it) }
-        return result
+    companion object {
+        fun mergePermutations(n: Int, permutations: MutableList<Permutation>): Permutation {
+            var result = Permutation(n)
+            permutations.forEach { result = result.multipliedFromLeft(it) }
+            return result
+        }
     }
 
 

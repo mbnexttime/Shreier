@@ -4,7 +4,7 @@ package dataclasses
 
 data class Permutation(
     val permutation: MutableList<Int>,
-    val realization: MutableList<String> = ArrayList()
+    val realization: MutableList<Int> = ArrayList()
 ) {
     constructor(numberOfElements: Int) : this(MutableList(numberOfElements) { it })
 
@@ -23,7 +23,7 @@ data class Permutation(
             result.permutation[permutation[i]] = i
         }
         for (permutation in realization.reversed()) {
-            result.realization.add(Realizer.rev[permutation]!!)
+            result.realization.add(-permutation)
         }
         return result
     }
